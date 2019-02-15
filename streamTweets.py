@@ -14,17 +14,9 @@ consumer_secret = "5KiTpWGbTG8dtRaBuhcLdoT1jp12vRnr3pJ4yAUDXKLUkoMVk8"
 class Streaming(StreamListener):
     # def on_connect(self):
     #     print("you are connected to the streaming server")
-    tweetList = []
+
     def on_data(self, data):
-        #print("started streaming process......")
-
-        # save the tweets to a csv file.
-        fileLocation = './tweets.json'
-
-        self.tweetList.append(data)
         print(data,',')
-        with open(fileLocation , 'w') as f:
-            json.dump(self.tweetList, f)
 
         return True
 
@@ -39,4 +31,4 @@ auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, start)
 
 #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
-stream.filter(track=['kenya'],languages=["en"])
+stream.filter(track=['epl'],languages=["en"])
