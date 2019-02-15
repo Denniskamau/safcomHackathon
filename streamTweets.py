@@ -19,7 +19,7 @@ class Streaming(StreamListener):
         print(data)
         # save the tweets to a csv file.
         fileLocation = './tweets.json'
-        with open(fileLocation , 'w') as f:
+        with open(fileLocation , 'a') as f:
             json.dump(data, f)
         return True
 
