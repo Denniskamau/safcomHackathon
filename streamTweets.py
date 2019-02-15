@@ -4,23 +4,28 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 
 #Variables that contains the user credentials to access Twitter API
-access_token = "360352221-eVqoPAikNUoPc8yEXZLpqvzEBZMGjlJUQ9FRsUXh"
-access_token_secret = "CyKahpildPm2UhRVdU3tu5gnfTgWQ0LI63zU6UBsYsI1O"
-consumer_key = "c152hflyHQ4kE8EQeYh6sv38D"
-consumer_secret = "WArSIMjrKQNL2NMVEvc0ZkqXS9uE3gIMo8Kk21n3icBsSiUWM2"
+access_token = "360352221-e2oxvLe97TNGQZuM2vdCEy8zBx2JBGItPClOxsFv"
+access_token_secret = "hUjCvYHdPLppWeRfidaf0Yfo4Xbu61uZ8ze64rtqnVNC1"
+consumer_key = "eAuQoYw9ffXtY5LdZm4Gmksfx"
+consumer_secret = "5KiTpWGbTG8dtRaBuhcLdoT1jp12vRnr3pJ4yAUDXKLUkoMVk8"
 
 
 #This is a basic listener that just prints received tweets to stdout.
 class Streaming(StreamListener):
     # def on_connect(self):
     #     print("you are connected to the streaming server")
+    tweetList = []
     def on_data(self, data):
-        print("started streaming process......")
-        print(data)
+        #print("started streaming process......")
+
         # save the tweets to a csv file.
         fileLocation = './tweets.json'
-        with open(fileLocation , 'a') as f:
-            json.dump(data, f)
+
+        self.tweetList.append(data)
+        print(data,',')
+        with open(fileLocation , 'w') as f:
+            json.dump(self.tweetList, f)
+
         return True
 
     def on_error(self, status):
