@@ -41,7 +41,7 @@ MarkupSafe==1.1.0
 matplotlib==2.2.3
 mccabe==0.6.1
 mock==2.0.0
-nltk==3.4
+nltk==3.4.5
 numpy==1.15.4
 oauthlib==3.0.1
 pandas==0.23.4
